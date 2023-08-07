@@ -13,21 +13,21 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: install reviewdog (default)
+      - name: install streamcode (default)
         uses: ./
-      - run: reviewdog -version
+      - run: streamcode -version
 
-      - name: install reviewdog (nightly)
+      - name: install streamcode (nightly)
         uses: ./
         with:
-          reviewdog_version: nightly
-      - run: reviewdog -version | grep nightly
+          streamcode_version: nightly
+      - run: streamcode -version | grep nightly
 
-      - name: install reviewdog (with reviewdog_version)
+      - name: install streamcode (with streamcode_version)
         uses: ./
         with:
-          reviewdog_version: v0.10.0
-      - run: test "$(reviewdog -version)" = '0.10.0'
+          streamcode_version: v0.10.0
+      - run: test "$(streamcode -version)" = '0.10.0'
 
   container:
     runs-on: ubuntu-latest
@@ -35,6 +35,6 @@ jobs:
       image: alpine:latest
     steps:
       - uses: actions/checkout@v3
-      - name: install reviewdog
+      - name: install streamcode
         uses: ./
-      - run: reviewdog -version
+      - run: streamcode -version
